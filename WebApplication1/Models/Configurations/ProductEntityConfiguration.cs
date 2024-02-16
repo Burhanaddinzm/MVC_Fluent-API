@@ -21,6 +21,7 @@ namespace WebApplication1.Models.Configurations
             builder.ConfigureAuditable();
 
             builder.HasKey(m => m.Id);
+            builder.HasIndex(m => m.Slug).IsUnique();
             builder.ToTable("Products");
 
 
