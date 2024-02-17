@@ -18,6 +18,7 @@ namespace WebApplication1.Models.Configurations
             builder.Property(m => m.CategoryId).HasColumnType("int").IsRequired();
             builder.Property(m => m.BrandId).HasColumnType("int").IsRequired();
 
+            //ConfigurationHelper.ConfigureAuditable(builder);
             builder.ConfigureAuditable();
 
             builder.HasKey(m => m.Id);

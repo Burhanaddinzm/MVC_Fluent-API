@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Models.Contexts;
 
@@ -11,9 +12,10 @@ using WebApplication1.Models.Contexts;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240217135701_SpecificationValues")]
+    partial class SpecificationValues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -392,8 +394,6 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("ProductId", "SpecificationId");
 
-                    b.HasIndex("SpecificationId");
-
                     b.ToTable("SpecificationValues", (string)null);
                 });
 
@@ -435,21 +435,6 @@ namespace WebApplication1.Migrations
                     b.HasOne("WebApplication1.Models.Entities.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("WebApplication1.Models.Entities.SpecificationValue", b =>
-                {
-                    b.HasOne("WebApplication1.Models.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("WebApplication1.Models.Entities.Specification", null)
-                        .WithMany()
-                        .HasForeignKey("SpecificationId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
