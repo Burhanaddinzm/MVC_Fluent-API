@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Size>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Small Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var size in Model)
+            {
+                <tr>
+                    <td>@size.Id</td>
+                    <td>@size.Name</td>
+                    <td>@size.SmallName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

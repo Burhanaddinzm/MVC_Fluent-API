@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models.Entities;
 
 namespace WebApplication1.Models.Contexts
 {
@@ -7,6 +8,7 @@ namespace WebApplication1.Models.Contexts
         public DataContext(DbContextOptions options) : base(options)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -14,6 +16,8 @@ namespace WebApplication1.Models.Contexts
             var currentAssembly = typeof(DataContext).Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(currentAssembly);
         }
+
+        public DbSet<Size> Sizes { get; set; }
 
     }
 }
