@@ -23,7 +23,11 @@ namespace WebApplication1.Controllers
         public IActionResult Details(int id)
         {
             var size = db.Sizes.FirstOrDefault(m => m.Id == id);
-            return View();
+
+            if(size == null)
+                return NotFound();
+
+            return View(size);
         }
 
         public IActionResult Create()
